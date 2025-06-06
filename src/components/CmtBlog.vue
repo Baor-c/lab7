@@ -18,7 +18,7 @@
                     <button type="submit" class="btn btn-success">Gửi bình luận</button>
                 </form>
 
-                <div v-if="comments.length" class="mt-3">
+                <div v-if="comments && comments.length" class="mt-3">
                     <h5>Danh sách các bình luận:</h5>
                     <ul style="list-style-type: circle;">
                         <li v-for="(comment, index) in comments" :key="index">
@@ -30,21 +30,27 @@
         </div>
     </div>
 </template>
+
 <script setup>
 import { ref } from 'vue'
 import img1 from '../assets/Images/rau.jpg'
 
-const items = ([
-    { title: '8 loại rau củ quả giàu canxi', content: 'Canxi là khoáng chất rất cần thiết cho cơ thể, đặc biệt là xương và răng. Canxi cũng giúp cơ thể duy trì chức năng của các tế bào thần kinh và cơ bắp. Thiếu canxi có thể dẫn đến loãng xương, đau nhức xương khớp và các vấn đề về tim mạch.', image: img1 },
-]);
+// Khai báo dữ liệu bài viết
+const items = [
+    { 
+        title: '8 loại rau củ quả giàu canxi', 
+        content: 'Canxi là khoáng chất rất cần thiết cho cơ thể, đặc biệt là xương và răng. Canxi cũng giúp cơ thể duy trì chức năng của các tế bào thần kinh và cơ bắp. Thiếu canxi có thể dẫn đến loãng xương, đau nhức xương khớp và các vấn đề về tim mạch.', 
+        image: img1 
+    }
+]
 
-// Khai báo các biến reactive
+// Khai báo các biến reactive cho bình luận
 const commentText = ref('')
 const comments = ref([])
 
 // Hàm xử lý gửi bình luận
 const submitComment = () => {
-    if (commentText.value.trim()) {
+    if (commentText.value && commentText.value.trim()) {
         comments.value.push({
             name: 'Người dùng',
             text: commentText.value.trim()
