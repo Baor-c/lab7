@@ -16,7 +16,7 @@
         <div class="row mt-5">
             <div class="col-md-8 mx-auto">
                 <div class="comment-section">
-                    <h4 class="text-primary mb-4">Bình luận bài viết</h4>
+                    <h4 class="text-primary mb-4 text-start">Bình luận bài viết</h4>
                     
                     <!-- Form nhập bình luận -->
                     <div class="comment-form mb-4">
@@ -49,7 +49,7 @@
                                         <strong class="comment-author text-primary">{{ comment.author }}</strong>
                                         <small class="comment-time text-muted">{{ comment.time }}</small>
                                     </div>
-                                    <p class="comment-text mb-0">{{ comment.content }}</p>
+                                    <p class="comment-text mb-0 text-start">{{ comment.content }}</p>
                                 </div>
                             </div>
                         </div>
@@ -157,6 +157,7 @@ const addComment = () => {
 .comment-text {
     color: #495057;
     line-height: 1.6;
+    text-align: left !important;
 }
 
 .comment-time {
